@@ -48,8 +48,10 @@ public override string ToString()
 }
 
 //Pozivanje procedure sa parametrima
-public static void OpisnoImeMetode(object params)
+public static List<T> OpisnoImeMetode(object params)
 {
+    var lista = new List<T>();
+    
     DataTable dataTable = new DataTable();
     SqlCommand komanda = Konekcija.GetCommand();
     SqlDataAdapter adapter = new SqlDataAdapter(komanda);
@@ -66,6 +68,17 @@ public static void OpisnoImeMetode(object params)
         komanda.Connection.Open();
         adapter.Fill(dataTable);
         /*Operacije na podacima ako ima nekih*/
+        if (dataTable.Rows.Count < 1)
+            throw new Exception("Tabela je prazna");
+
+        foreach (DataRow row in dataTable.Rows)
+        {
+            var Item = new T();
+
+            /*Dodavanje vrednosti*/
+
+            lista.add(Item);
+        }
     }
     catch (Exception e)
     {
