@@ -1,0 +1,13 @@
+******UPDATE*******
+UPDATE Obroci
+SET kolona = vrednost 
+WHERE uslov
+
+***************INSERT**************
+INSERT INTO ImeTabele(params...)
+VALUES(param1, param2, ..., params)
+
+*********DELETE*********
+DELETE FROM Tabela 
+WHERE kolona = vrednost
+
